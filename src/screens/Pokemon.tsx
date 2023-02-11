@@ -50,6 +50,7 @@ export default function Pokemon() {
       alert(`You Won!`);
     } else {
       alert(`Wrong answer!`);
+      pokemon.value = ""
     }
   }
 
