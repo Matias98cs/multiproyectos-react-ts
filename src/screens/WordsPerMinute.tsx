@@ -71,17 +71,45 @@ export default function WordsPerMinute() {
         <h2>Charactares typed: {characterCount}</h2>
         <h3>Remaning time: {time}</h3>
         {time ? (
-          <form onSubmit={handleSubmit}>
+          <form
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: "1rem",
+              justifyContent: "center",
+              alignItems: "center",
+
+            }}
+            onSubmit={handleSubmit}>
             <input
+              style={{
+                border: "none",
+                borderRadius: "1.2rem",
+                padding: ".5rem",
+              }}
               type="text"
               autoFocus
               value={buffer}
               onChange={(e) => setBuffer(e.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button
+              style={{
+                borderRadius: "1.2rem",
+                border: "none",
+                cursor: "pointer",
+                padding: "1rem",
+              }}
+              type="submit">Submit</button>
           </form>
         ) : (
-          <button onClick={() => setTime(60)}>Play</button>
+          <button
+            style={{
+              borderRadius: "1.2rem",
+              border: "none",
+              padding: ".5rem 0 .5rem 0",
+              cursor: "pointer",
+            }}
+            onClick={() => setTime(60)}>Play</button>
         )}
       </div>
     </>
