@@ -1,0 +1,42 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 4rem;
+}
+
+.home-container h2 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+.home-links {
+    display:  flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.home-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    letter-spacing: .5px;
+}
+
+.home-links a:nth-child(1):hover {
+    background-color: tomato
+}
+
+.home-links a:nth-child(2):hover {
+    background-color:rgba(238, 255, 0, 0.73)
+}
+
+.home-links a:nth-child(3):hover {
+    background-color: lightblue ;
+}

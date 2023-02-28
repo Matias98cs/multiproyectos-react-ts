@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const IMAGES = [
   "https://icongr.am/devicon/angularjs-original.svg?size=128&color=currentColor",
@@ -29,47 +30,66 @@ export default function Memotest() {
   }, [selected]);
 
   useEffect(() => {
-    if(guessed.length === IMAGES.length){
-        alert("You win!");
-        location.reload();
+    if (guessed.length === IMAGES.length) {
+      alert("You win!");
+      location.reload();
     }
   }, [guessed]);
 
   return (
-    <main
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr))",
-        gap: "24px",
-      }}
-    >
-      {IMAGES.map((image) => {
-        const [, url] = image.split("|");
-        return (
-          <li
-            onClick={() =>
-              selected.length < 2 &&
-              setSelected((selected) => selected.concat(image))
-            }
-            key={image}
-            style={{
-              cursor: "pointer",
-              padding: 12,
-              border: "1px solid #666",
-              borderRadius: 12,
-            }}
-          >
-            {selected.includes(image) || guessed.includes(image) ? (
-              <img src={url} alt="icon" />
-            ) : (
-              <img
-                src="https://icongr.am/feather/hexagon.svg?size=128&color=currentColor"
-                alt="icon"
-              />
-            )}
-          </li>
-        );
-      })}
-    </main>
+    <>
+      <Link
+        to={`/`}
+        style={{
+          position: "absolute",
+          left: "0",
+          marginLeft: "1rem",
+          marginTop: "1rem",
+          color: "black",
+          padding: "1rem",
+          top: "0",
+          borderRadius: "1.2rem",
+          backgroundColor: "white",
+          textDecoration: "none",
+        }}
+      >
+        Volver
+      </Link>
+      <main
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr))",
+          gap: "24px",
+        }}
+      >
+        {IMAGES.map((image) => {
+          const [, url] = image.split("|");
+          return (
+            <li
+              onClick={() =>
+                selected.length < 2 &&
+                setSelected((selected) => selected.concat(image))
+              }
+              key={image}
+              style={{
+                cursor: "pointer",
+                padding: 12,
+                border: "1px solid #666",
+                borderRadius: 12,
+              }}
+            >
+              {selected.includes(image) || guessed.includes(image) ? (
+                <img src={url} alt="icon" />
+              ) : (
+                <img
+                  src="https://icongr.am/feather/hexagon.svg?size=128&color=currentColor"
+                  alt="icon"
+                />
+              )}
+            </li>
+          );
+        })}
+      </main>
+    </>
   );
 }
