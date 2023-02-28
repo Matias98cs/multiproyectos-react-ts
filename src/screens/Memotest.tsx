@@ -44,6 +44,7 @@ export default function Memotest() {
           position: "absolute",
           left: "0",
           marginLeft: "1rem",
+          marginTop: "1rem",
           color: "black",
           padding: "1rem",
           top: "0",
