@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const POKEMONS = [
   "bulbasaur",
@@ -28,7 +29,7 @@ const POKEMONS = [
   "pikachu",
   "raichu",
   "sandshrew",
-  "sandslash"
+  "sandslash",
 ];
 
 const MATCH = Math.floor(Math.random() * POKEMONS.length);
@@ -50,42 +51,62 @@ export default function Pokemon() {
       alert(`You Won!`);
     } else {
       alert(`Wrong answer!`);
-      pokemon.value = ""
+      pokemon.value = "";
     }
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 12,
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <img
-        width={412}
-        height={412}
+    <>
+      <Link
+        to={`/`}
         style={{
-          imageRendering: "pixelated",
-          filter: hasWon ? "" : "brightness(0) invert(1)",
+          position: "absolute",
+          left: "0",
+          marginLeft: "1rem",
+          top: "0",
+          color: "black",
+          marginTop: "1rem",
+          padding: "1rem",
+          borderRadius: "1.2rem",
+          backgroundColor: "white",
+          textDecoration: "none",
         }}
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-          MATCH + 1
-        }.png`}
-        alt=""
-      />
-      {hasWon ? (
-        <button style={{ width: "100%" }} onClick={() => location.reload()}>
-          Play Again
-        </button>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="pokemon" autoFocus/>
-          <button type="submit">Submit</button>
-        </form>
-      )}
-    </div>
+      >
+        Volver
+      </Link>
+
+      <div
+        style={{
+          display: "flex",
+          gap: 12,
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          width={412}
+          height={412}
+          style={{
+            imageRendering: "pixelated",
+            filter: hasWon ? "" : "brightness(0) invert(1)",
+          }}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+            MATCH + 1
+          }.png`}
+          alt=""
+        />
+        {hasWon ? (
+          <button style={{ width: "100%" }} onClick={() => location.reload()}>
+            Play Again
+          </button>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <input type="text" name="pokemon" autoFocus />
+            <button type="submit">Submit</button>
+          </form>
+        )}
+      </div>
+    </>
   );
 }

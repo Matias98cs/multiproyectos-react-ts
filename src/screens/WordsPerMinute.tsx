@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // words with 5 letters and no spacial characters
 const WORDS = [
@@ -38,32 +39,79 @@ export default function WordsPerMinute() {
     }
   }, [time]);
 
-
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 12,
-        textAlign: "center",
-      }}
-    >
-      {Boolean(time) && <h1 style={{ fontSize: 48 }}>{word}</h1>}
-      <h2>Charactares typed: {characterCount}</h2>
-      <h3>Remaning time: {time}</h3>
-      {time ? (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            autoFocus
-            value={buffer}
-            onChange={(e) => setBuffer(e.target.value)}
-          />
-          <button type="submit">Submit</button>
-        </form>
-      ) : (
-        <button onClick={() => setTime(60)}>Play</button>
-      )}
-    </div>
+    <>
+      <Link
+        to={`/`}
+        style={{
+          position: "absolute",
+          left: "0",
+          marginLeft: "1rem",
+          top: "0",
+          color: "black",
+          marginTop: "1rem",
+          padding: "1rem",
+          borderRadius: "1.2rem",
+          backgroundColor: "white",
+          textDecoration: "none",
+        }}
+      >
+        Volver
+      </Link>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+          textAlign: "center",
+        }}
+      >
+        {Boolean(time) && <h1 style={{ fontSize: 48 }}>{word}</h1>}
+        <h2>Charactares typed: {characterCount}</h2>
+        <h3>Remaning time: {time}</h3>
+        {time ? (
+          <form
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: "1rem",
+              justifyContent: "center",
+              alignItems: "center",
+
+            }}
+            onSubmit={handleSubmit}>
+            <input
+              style={{
+                border: "none",
+                borderRadius: "1.2rem",
+                padding: ".5rem",
+              }}
+              type="text"
+              autoFocus
+              value={buffer}
+              onChange={(e) => setBuffer(e.target.value)}
+            />
+            <button
+              style={{
+                borderRadius: "1.2rem",
+                border: "none",
+                cursor: "pointer",
+                padding: "1rem",
+              }}
+              type="submit">Submit</button>
+          </form>
+        ) : (
+          <button
+            style={{
+              borderRadius: "1.2rem",
+              border: "none",
+              padding: ".5rem 0 .5rem 0",
+              cursor: "pointer",
+            }}
+            onClick={() => setTime(60)}>Play</button>
+        )}
+      </div>
+    </>
   );
 }
